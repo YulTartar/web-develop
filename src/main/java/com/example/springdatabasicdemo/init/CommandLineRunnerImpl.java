@@ -2,7 +2,7 @@ package com.example.springdatabasicdemo.init;
 
 import com.example.springdatabasicdemo.dtos.PlaceDto;
 import com.example.springdatabasicdemo.dtos.AvailabilityDto;
-import com.example.springdatabasicdemo.dtos.SubGroupDto;
+import com.example.springdatabasicdemo.dtos.GoodsDto;
 import com.example.springdatabasicdemo.services.AvailabilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -32,11 +32,11 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         PlaceDto p1 = new PlaceDto(0,"UVP-211");
         PlaceDto p2 = new PlaceDto(0,"UVP-212");
 
-        SubGroupDto s1 = new SubGroupDto(0,"MIIT");
-        SubGroupDto s2 = new SubGroupDto(0,"Subway");
+        GoodsDto g1 = new GoodsDto(0,"MIIT");
+        GoodsDto g2 = new GoodsDto(0,"Subway");
 
-        AvailabilityDto a1 = new AvailabilityDto(0, 10, p1, s1);
-        AvailabilityDto a2 = new AvailabilityDto(0, 15, p2, s2);
+        AvailabilityDto a1 = new AvailabilityDto(0, 10, p1, g1);
+        AvailabilityDto a2 = new AvailabilityDto(0, 15, p2, g2);
 
         a1 = availabilityService.register(a1);
         a2 = availabilityService.register(a2);

@@ -4,9 +4,9 @@ import com.example.springdatabasicdemo.dtos.PlaceDto;
 import com.example.springdatabasicdemo.dtos.AvailabilityDto;
 import com.example.springdatabasicdemo.models.Place;
 import com.example.springdatabasicdemo.models.Availability;
-import com.example.springdatabasicdemo.models.SubGroup;
+import com.example.springdatabasicdemo.models.Goods;
 import com.example.springdatabasicdemo.repositories.PlaceRepository;
-import com.example.springdatabasicdemo.repositories.SubGroupRepository;
+import com.example.springdatabasicdemo.repositories.GoodsRepository;
 import com.example.springdatabasicdemo.repositories.AvailabilityRepository;
 import com.example.springdatabasicdemo.services.AvailabilityService;
 import org.modelmapper.ModelMapper;
@@ -27,7 +27,7 @@ public class AvailabilityServiceImpl implements AvailabilityService<Integer> {
     private PlaceRepository placeRepository;
 
     @Autowired
-    private SubGroupRepository SubGroupRepository;
+    private GoodsRepository GoodsRepository;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -39,9 +39,9 @@ public class AvailabilityServiceImpl implements AvailabilityService<Integer> {
             Place g = placeRepository.findById(avalability.getPlace().getId()).get();
             s.setPlace(g);
         }
-        if (avalability.getSubgroup().getId() != 0) {
-            SubGroup g = SubGroupRepository.findById(avalability.getSubgroup().getId()).get();
-            s.setSubgroup(g);
+        if (avalability.getGoods().getId() != 0) {
+            Goods g = GoodsRepository.findById(avalability.getGoods().getId()).get();
+            s.setGoods(g);
         }
         return modelMapper.map(availabilityRepository.save(s), AvailabilityDto.class);
     }
