@@ -1,6 +1,6 @@
 package com.example.springdatabasicdemo.init;
 
-import com.example.springdatabasicdemo.dtos.GroupDto;
+import com.example.springdatabasicdemo.dtos.PlaceDto;
 import com.example.springdatabasicdemo.dtos.AvailabilityDto;
 import com.example.springdatabasicdemo.dtos.SubGroupDto;
 import com.example.springdatabasicdemo.services.AvailabilityService;
@@ -21,30 +21,30 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         seedData();
     }
 
-    private void printAllAvailabilityByGroupName(String groupName) {
+    private void printAllAvailabilityByPlaceName(String placeName) {
         availabilityService
-                .findAvalabilitysByGroup(groupName)
+                .findAvalabilitysByPlace(placeName)
                 .forEach(System.out::println);
     }
 
     private void seedData() throws IOException {
         //Добавление в БД записей
-        GroupDto g1 = new GroupDto(0,"UVP-211");
-        GroupDto g2 = new GroupDto(0,"UVP-212");
+        PlaceDto p1 = new PlaceDto(0,"UVP-211");
+        PlaceDto p2 = new PlaceDto(0,"UVP-212");
 
-        SubGroupDto p1 = new SubGroupDto(0,"MIIT");
-        SubGroupDto p2 = new SubGroupDto(0,"Subway");
+        SubGroupDto s1 = new SubGroupDto(0,"MIIT");
+        SubGroupDto s2 = new SubGroupDto(0,"Subway");
 
-        AvailabilityDto s1 = new AvailabilityDto(0, 10, g1, p1);
-        AvailabilityDto s2 = new AvailabilityDto(0, 15, g2, p2);
+        AvailabilityDto a1 = new AvailabilityDto(0, 10, p1, s1);
+        AvailabilityDto a2 = new AvailabilityDto(0, 15, p2, s2);
 
-        s1 = availabilityService.register(s1);
-        s2 = availabilityService.register(s2);
+        a1 = availabilityService.register(a1);
+        a2 = availabilityService.register(a2);
 
-        printAllAvailabilityByGroupName("UVP-212");
+        printAllAvailabilityByPlaceName("UVP-212");
 
         // studentService.transfer(s1, s2.getGroup());
 
-        printAllAvailabilityByGroupName("UVP-212");
+        printAllAvailabilityByPlaceName("UVP-212");
     }
 }

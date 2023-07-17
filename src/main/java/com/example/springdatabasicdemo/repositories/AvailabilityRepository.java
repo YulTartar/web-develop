@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface AvailabilityRepository extends JpaRepository<Availability, Integer> {
-    List<Availability> findAllByGroupName(String groupName);
+    List<Availability> findAllByPlaceName(String groupName);
 }

@@ -18,9 +18,9 @@ public class Availability extends BaseEntity {
     private int count;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "group_id", referencedColumnName = "id", nullable=false)
+    @JoinColumn(name = "place_id", referencedColumnName = "id", nullable=false)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private Group group;
+    private Place place;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "subgroup_id", referencedColumnName = "id", nullable=false)

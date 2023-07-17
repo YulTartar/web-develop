@@ -1,11 +1,11 @@
 package com.example.springdatabasicdemo.services.impl;
 
-import com.example.springdatabasicdemo.dtos.GroupDto;
+import com.example.springdatabasicdemo.dtos.PlaceDto;
 import com.example.springdatabasicdemo.dtos.AvailabilityDto;
-import com.example.springdatabasicdemo.models.Group;
+import com.example.springdatabasicdemo.models.Place;
 import com.example.springdatabasicdemo.models.Availability;
 import com.example.springdatabasicdemo.models.SubGroup;
-import com.example.springdatabasicdemo.repositories.GroupRepository;
+import com.example.springdatabasicdemo.repositories.PlaceRepository;
 import com.example.springdatabasicdemo.repositories.SubGroupRepository;
 import com.example.springdatabasicdemo.repositories.AvailabilityRepository;
 import com.example.springdatabasicdemo.services.AvailabilityService;
@@ -24,7 +24,7 @@ public class AvailabilityServiceImpl implements AvailabilityService<Integer> {
     private AvailabilityRepository availabilityRepository;
 
     @Autowired
-    private GroupRepository groupRepository;
+    private PlaceRepository placeRepository;
 
     @Autowired
     private SubGroupRepository SubGroupRepository;
@@ -35,9 +35,9 @@ public class AvailabilityServiceImpl implements AvailabilityService<Integer> {
     @Override
     public AvailabilityDto register(AvailabilityDto avalability) {
         Availability s = modelMapper.map(avalability, Availability.class);
-        if (avalability.getGroup().getId() != 0) {
-            Group g = groupRepository.findById(avalability.getGroup().getId()).get();
-            s.setGroup(g);
+        if (avalability.getPlace().getId() != 0) {
+            Place g = placeRepository.findById(avalability.getPlace().getId()).get();
+            s.setPlace(g);
         }
         if (avalability.getSubgroup().getId() != 0) {
             SubGroup g = SubGroupRepository.findById(avalability.getSubgroup().getId()).get();
@@ -57,10 +57,10 @@ public class AvailabilityServiceImpl implements AvailabilityService<Integer> {
     }
 
     @Override
-    public void transfer(AvailabilityDto avalability, GroupDto group) {
+    public void transfer(AvailabilityDto avalability, PlaceDto place) {
         Availability s = availabilityRepository.findById(avalability.getId()).get();
-        Group g = groupRepository.findById(group.getId()).get();
-        s.setGroup(g);
+        Place g = placeRepository.findById(place.getId()).get();
+        s.setPlace(g);
         availabilityRepository.save(s);
     }
 
@@ -75,7 +75,7 @@ public class AvailabilityServiceImpl implements AvailabilityService<Integer> {
     }
 
     @Override
-    public List<AvailabilityDto> findAvalabilitysByGroup(String group) {
-        return availabilityRepository.findAllByGroupName(group).stream().map((s) -> modelMapper.map(s, AvailabilityDto.class)).collect(Collectors.toList());
+    public List<AvailabilityDto> findAvalabilitysByPlace(String place) {
+        return availabilityRepository.findAllByPlaceName(place).stream().map((s) -> modelMapper.map(s, AvailabilityDto.class)).collect(Collectors.toList());
     }
 }

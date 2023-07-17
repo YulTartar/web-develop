@@ -9,15 +9,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class AvailabilityDto {
-
+public class PlaceDto {
     private int id;
-    private int count;
-    private PlaceDto place;
-    private SubGroupDto subgroup;
+    private String name;
 
     @Override
     public String toString() {
-        return "Availability { id=" + id + ", count=" + count + " }";
+        return "Place { id=" + id + ", name=" + name + " }";
     }
 }

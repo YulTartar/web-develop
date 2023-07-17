@@ -1,6 +1,6 @@
 package com.example.springdatabasicdemo.services;
 
-import com.example.springdatabasicdemo.dtos.GroupDto;
+import com.example.springdatabasicdemo.dtos.PlaceDto;
 import com.example.springdatabasicdemo.dtos.AvailabilityDto;
 
 import java.util.List;
@@ -14,11 +14,11 @@ public interface AvailabilityService<ID> {
 
     void expel(ID id);
 
-    void transfer(AvailabilityDto avalability, GroupDto group);
+    void transfer(AvailabilityDto avalability, PlaceDto place);
 
     Optional<AvailabilityDto> findAvalability(Integer id);
 
     List<AvailabilityDto> getAll();
-    List<AvailabilityDto> findAvalabilitysByGroup(String group);
+    List<AvailabilityDto> findAvalabilitysByPlace(String place);
 }
 
