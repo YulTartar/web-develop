@@ -17,11 +17,13 @@ import lombok.Setter;
 public class Storage extends Place {
 
     @Column(name = "car")
-    private int level;
+    private int car;
 
+    @Column(name = "mechanization")
+    private int mechanization;
 
     @Override
     public String toString() {
-        return "Level { id=" + id + ", level=" + level + " }";
+        return "Level { id=" + id + ", car=" + car + ", mechanization=" + mechanization +" }";
     }
 }

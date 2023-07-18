@@ -30,10 +30,26 @@ public class Goods extends BaseEntity {
     @Column(name = "name", length = 50, nullable = false)
     private String name;
 
+    @Column(name = "description", length = 255)
+    private String description;
+
+    @Column(name = "OKPD")
+    private String OKPD;
+
+    @Column(name = "OKVED")
+    private String OKVED;
+
+    @Column(name = "type_barcode", length = 255)
+    private String typeBarcode;
+
+    @Column(name = "barcode", length = 20)
+    private String barcode;
+
 
     @Override
     public String toString() {
-        return "Goods { id=" + id + ", name=" + name + " }";
+        return "Goods { id=" + id + ", name=" + name + ", description=" + description + ", OKPD=" + OKPD + ", OKVED=" + OKVED
+        + ", type_barcode=" + typeBarcode + ", barcode=" + barcode + " }";
     }
 }
 

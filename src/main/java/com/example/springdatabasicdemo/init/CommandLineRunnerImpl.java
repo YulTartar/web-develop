@@ -1,12 +1,10 @@
 package com.example.springdatabasicdemo.init;
 
-import com.example.springdatabasicdemo.dtos.PlaceDto;
-import com.example.springdatabasicdemo.dtos.AvailabilityDto;
-import com.example.springdatabasicdemo.dtos.GoodsDto;
-import com.example.springdatabasicdemo.dtos.ShopDto;
+import com.example.springdatabasicdemo.dtos.*;
 import com.example.springdatabasicdemo.services.AvailabilityService;
 import com.example.springdatabasicdemo.services.PlaceService;
 import com.example.springdatabasicdemo.services.ShopService;
+import com.example.springdatabasicdemo.services.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -24,6 +22,9 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
     private ShopService shopService;
 
     @Autowired
+    private StorageService storageService;
+
+    @Autowired
     private PlaceService placeService;
 
     @Override
@@ -39,11 +40,11 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
     private void seedData() throws IOException {
         //Добавление в БД записей
-        ShopDto s1 = new ShopDto(0,"UVP-211", "Постамат");
-        ShopDto s2 = new ShopDto(0,"UVP-212", "Постамат");
+        ShopDto s1 = new ShopDto(0, "Apax", 3, "SHOP", "Одинцово", 300, 50, "Постамат", 5);
+        StorageDto s2 = new StorageDto(0, "Пром", 3, "STORAGE", "Владивосток", 500, 50, 15, 5);
 
         shopService.register(s1);
-        shopService.register(s2);
+        storageService.register(s2);
 
         System.out.println(placeService.findPlace(1).get());
         System.out.println(placeService.findPlace(1).get());
@@ -54,8 +55,8 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         PlaceDto p1 = pO1.get();
         PlaceDto p2 = pO2.get();
 
-        GoodsDto g1 = new GoodsDto(0,"MIIT");
-        GoodsDto g2 = new GoodsDto(0,"Subway");
+        GoodsDto g1 = new GoodsDto(0,"MIIT","хавоший", "7878", "7878", "тип", "7878");
+        GoodsDto g2 = new GoodsDto(0,"Subway","чудесный", "75578", "55", "тип2", "555");
 
         AvailabilityDto a1 = new AvailabilityDto(0, 10, p1, g1);
         AvailabilityDto a2 = new AvailabilityDto(0, 15, p2, g2);

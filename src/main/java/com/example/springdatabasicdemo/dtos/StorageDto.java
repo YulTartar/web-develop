@@ -12,10 +12,16 @@ import lombok.Setter;
 public class StorageDto {
     private int id;
     private String name;
+    private int capacity;
+    private String type;
+    private String address;
+    private int employees;
+    private int space;
     private int car;
+    private int mechanization;
 
     @Override
     public String toString() {
-        return "Shop { id=" + id + ", car=" + car + " }";
+        return "Shop { id=" + id + ", car=" + car + ", mechanization=" + mechanization + " }";
     }
 }

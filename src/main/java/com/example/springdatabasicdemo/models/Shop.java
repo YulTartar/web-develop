@@ -21,9 +21,11 @@ public class Shop extends Place {
     @Column(name = "level", length = 50, nullable = false)
     private String level;
 
+    @Column(name = "rating")
+    private int rating;
 
     @Override
     public String toString() {
-        return "Level { id=" + id + ", level=" + level + " }";
+        return "Level { id=" + id + ", level=" + level + ", rating=" + rating + " }";
     }
 }

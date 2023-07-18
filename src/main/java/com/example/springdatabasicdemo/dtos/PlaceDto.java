@@ -13,6 +13,10 @@ public class PlaceDto {
     private int id;
     private String name;
     private int capacity;
+    private String type;
+    private String address;
+    private int employees;
+    private int space;
 
     @Override
     public String toString() {
