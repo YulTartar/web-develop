@@ -58,7 +58,7 @@ public class StorageServiceImpl implements StorageService<Integer> {
 
     @Override
     public List<StorageDto> findStorageByCapacity(int capacity) {
-        return storageRepository.findStorageByCapacity(capacity).stream().map((p)
+        return storageRepository.findByCapacityGreaterThanEqual(capacity).stream().map((p)
                 -> modelMapper.map(p, StorageDto.class)).collect(Collectors.toList());
     }
 

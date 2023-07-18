@@ -10,6 +10,5 @@ import java.util.List;
 
 @Repository
 public interface StorageRepository extends JpaRepository<Storage, Integer> {
-    @Query(value = "SELECT v FROM Storage v WHERE v.capacity >= :capacity")
-    List<Storage> findStorageByCapacity(@Param(value = "capacity") int capacity);
+    List<Storage> findByCapacityGreaterThanEqual(int capacity);
 }
