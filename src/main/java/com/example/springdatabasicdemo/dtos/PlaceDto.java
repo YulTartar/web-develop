@@ -20,6 +20,7 @@ public class PlaceDto {
 
     @Override
     public String toString() {
-        return "Place { id=" + id + ", name=" + name + " }";
+        return "Place { id=" + id + ", name=" + name + ", capacity=" + capacity + ", type=" + type +
+                ", address=" + address + ", employees=" + employees + ", space" + space +" }";
     }
 }

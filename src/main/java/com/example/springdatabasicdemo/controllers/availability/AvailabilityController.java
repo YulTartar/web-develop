@@ -37,7 +37,7 @@ public class AvailabilityController {
         java.sql.Date sqlDate = java.sql.Date.valueOf(localDate);
         List<StorageDto> storageList = availabilityService.findAllbyDate(sqlDate);
         if (storageList.isEmpty()) {
-            throw new AvailabilityFindNotFoundException();
+            throw new AvailabilityNotFoundException();
         }
         return storageList;
     }
@@ -46,7 +46,7 @@ public class AvailabilityController {
     Iterable<GoodsDto> placeNameByGoods(@PathVariable String name) throws Throwable {
         List<GoodsDto> goodsList = availabilityService.findGoodsByPlaceName(name);
         if (goodsList.isEmpty()) {
-            throw new AvailabilityFindNotFoundAdvice();
+            throw new AvailabilityNotFoundException();
         }
         return goodsList;
     }

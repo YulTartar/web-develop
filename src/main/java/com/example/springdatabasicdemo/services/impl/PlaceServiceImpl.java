@@ -1,8 +1,12 @@
 package com.example.springdatabasicdemo.services.impl;
 
+import com.example.springdatabasicdemo.dtos.AvailabilityDto;
 import com.example.springdatabasicdemo.dtos.PlaceDto;
+import com.example.springdatabasicdemo.models.Availability;
 import com.example.springdatabasicdemo.models.Place;
+import com.example.springdatabasicdemo.repositories.AvailabilityRepository;
 import com.example.springdatabasicdemo.repositories.PlaceRepository;
+import com.example.springdatabasicdemo.services.AvailabilityService;
 import com.example.springdatabasicdemo.services.PlaceService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +23,9 @@ public class PlaceServiceImpl implements PlaceService<Integer> {
     private PlaceRepository placeRepository;
 
     @Autowired
+    private AvailabilityService availabilityService;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     @Override
@@ -28,20 +35,22 @@ public class PlaceServiceImpl implements PlaceService<Integer> {
     }
 
     @Override
-    public void expel(PlaceDto goods) {
-        placeRepository.deleteById(goods.getId());
+    public void expel(PlaceDto place) {
+        List<AvailabilityDto> avail = availabilityService.findAllByPlaceId(place.getId());
+        for (AvailabilityDto a : avail) {
+            availabilityService.expel(a);
+        }
+        placeRepository.deleteById(place.getId());
     }
 
     @Override
     public void expel(Integer id) {
+        List<AvailabilityDto> avail = availabilityService.findAllByPlaceId(id);
+        for (AvailabilityDto a : avail) {
+            availabilityService.expel(a);
+        }
         placeRepository.deleteById(id);
     }
-    /*
-    @Override
-    public PlaceDto findPlace(Integer id) {
-        return modelMapper.map(placeRepository.findById(id), PlaceDto.class);
-    }
-    */
 
     @Override
     public Optional<PlaceDto> findPlace(Integer id) {

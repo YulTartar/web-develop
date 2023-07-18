@@ -17,10 +17,11 @@ public class GoodsDto {
     private String OKVED;
     private String typeBarcode;
     private String barcode;
+    private java.sql.Date expirationDate;
 
     @Override
     public String toString() {
         return "Goods { id=" + id + ", name=" + name + ", description=" + description + ", OKPD=" + OKPD + ", OKVED=" + OKVED
-                + ", type_barcode=" + typeBarcode + ", barcode=" + barcode + " }";
+                + ", type_barcode=" + typeBarcode + ", barcode=" + barcode + ", expiration_date=" + expirationDate + " }";
     }
 }

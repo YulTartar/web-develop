@@ -45,11 +45,13 @@ public class Goods extends BaseEntity {
     @Column(name = "barcode", length = 20)
     private String barcode;
 
+    @Column(name = "expiration_date")
+    private java.sql.Date expirationDate;
 
     @Override
     public String toString() {
         return "Goods { id=" + id + ", name=" + name + ", description=" + description + ", OKPD=" + OKPD + ", OKVED=" + OKVED
-        + ", type_barcode=" + typeBarcode + ", barcode=" + barcode + " }";
+        + ", type_barcode=" + typeBarcode + ", barcode=" + barcode + ", expiration_date=" + expirationDate + " }";
     }
 }
 

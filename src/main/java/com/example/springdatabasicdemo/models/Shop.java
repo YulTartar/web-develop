@@ -26,6 +26,7 @@ public class Shop extends Place {
 
     @Override
     public String toString() {
-        return "Level { id=" + id + ", level=" + level + ", rating=" + rating + " }";
+        return "Shop { id=" + id + ", name=" + name + ", capacity=" + capacity + ", type=" + type +
+                ", address=" + address + ", employees=" + employees + ", space" + space + ", level=" + level + ", rating=" + rating + " }";
     }
 }

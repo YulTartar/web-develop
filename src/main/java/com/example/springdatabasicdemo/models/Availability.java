@@ -32,6 +32,6 @@ public class Availability extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Availability { id=" + id + ", count=" + count + " }";
+        return "Availability { id=" + id + ", count=" + count + ", place=" + place + ", goods=" + goods + ", data_delivery=" + dateDelivery + " }";
     }
 }

@@ -1,6 +1,7 @@
 package com.example.springdatabasicdemo.services;
 
 import com.example.springdatabasicdemo.dtos.GoodsDto;
+import com.example.springdatabasicdemo.dtos.PlaceDto;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,10 @@ public interface GoodsService<ID> {
 
    // GoodsDto findAvailabilityByGoodsName(String goodsName);
 
+    List<GoodsDto> findBadGoods();
+    /*
+    List<PlaceDto> findPlacesByGoodsId(int id);
+    */
     List<GoodsDto> getAll();
 }
 

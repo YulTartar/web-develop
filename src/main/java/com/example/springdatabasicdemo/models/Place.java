@@ -29,22 +29,22 @@ public class Place extends BaseEntity {
     }
 
     @Column(name = "name", length = 50, nullable = false)
-    private String name;
+    protected String name;
 
     @Column(name = "capacity")
-    private int capacity;
+    protected int capacity;
 
     @Column(name = "type", length = 16)
-    private String type;
+    protected String type;
 
     @Column(name = "address", length = 255)
-    private String address;
+    protected String address;
 
     @Column(name = "employees", length = 255)
-    private int employees;
+    protected int employees;
 
     @Column(name = "space", length = 255)
-    private int space;
+    protected int space;
 
 
     @Override

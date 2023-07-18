@@ -1,7 +1,6 @@
 package com.example.springdatabasicdemo.services.impl;
 
 import com.example.springdatabasicdemo.dtos.GoodsDto;
-import com.example.springdatabasicdemo.dtos.PlaceDto;
 import com.example.springdatabasicdemo.dtos.AvailabilityDto;
 import com.example.springdatabasicdemo.models.Place;
 import com.example.springdatabasicdemo.models.Availability;
@@ -56,7 +55,7 @@ public class AvailabilityServiceImpl implements AvailabilityService<Integer> {
     public void expel(Integer id) {
         availabilityRepository.deleteById(id);
     }
-
+    /*
     @Override
     public void transfer(AvailabilityDto avalability, PlaceDto place) {
         Availability s = availabilityRepository.findById(avalability.getId()).get();
@@ -64,7 +63,7 @@ public class AvailabilityServiceImpl implements AvailabilityService<Integer> {
         s.setPlace(g);
         availabilityRepository.save(s);
     }
-
+    */
     @Override
     public Optional<AvailabilityDto> findAvalability(Integer id) {
         return Optional.ofNullable(modelMapper.map(availabilityRepository.findById(id), AvailabilityDto.class));
@@ -83,6 +82,11 @@ public class AvailabilityServiceImpl implements AvailabilityService<Integer> {
     @Override
     public List<AvailabilityDto> findAvalabilitysByPlace(String place) {
         return availabilityRepository.findAllByPlaceName(place).stream().map((s) -> modelMapper.map(s, AvailabilityDto.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AvailabilityDto> findAllByPlaceId(int id) {
+        return availabilityRepository.findAllByPlaceId(id).stream().map((s) -> modelMapper.map(s, AvailabilityDto.class)).collect(Collectors.toList());
     }
 
     @Override

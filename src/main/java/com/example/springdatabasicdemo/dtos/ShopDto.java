@@ -22,6 +22,7 @@ public class ShopDto {
 
     @Override
     public String toString() {
-        return "Shop { id=" + id + ", name=" + name +", level=" + level + ", rating=" + rating + " }";
+        return "Shop { id=" + id + ", name=" + name + ", capacity=" + capacity + ", type=" + type +
+                ", address=" + address + ", employees=" + employees + ", space" + space + ", level=" + level + ", rating=" + rating + " }";
     }
 }

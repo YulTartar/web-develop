@@ -32,7 +32,7 @@ public class StorageController {
     Iterable<StorageDto> findByCapacity(@PathVariable Integer capacity) throws Throwable {
         List<StorageDto> storageList = storageService.findStorageByCapacity(capacity);
         if (storageList.isEmpty()) {
-            throw new StorageFindNotFoundException();
+            throw new StorageNotFoundException();
         }
         return storageList;
     }

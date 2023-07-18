@@ -4,4 +4,7 @@ class AvailabilityNotFoundException extends RuntimeException {
     AvailabilityNotFoundException(Integer id) {
         super("Could not find availability " + id);
     }
+    AvailabilityNotFoundException() {
+        super("Could not find availability :(");
+    }
 }

@@ -1,8 +1,10 @@
 package com.example.springdatabasicdemo.services.impl;
 
+import com.example.springdatabasicdemo.dtos.AvailabilityDto;
 import com.example.springdatabasicdemo.dtos.ShopDto;
 import com.example.springdatabasicdemo.models.Shop;
 import com.example.springdatabasicdemo.repositories.ShopRepository;
+import com.example.springdatabasicdemo.services.AvailabilityService;
 import com.example.springdatabasicdemo.services.ShopService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class ShopServiceImpl implements ShopService<Integer> {
     private ShopRepository shopRepository;
 
     @Autowired
+    private AvailabilityService availabilityService;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     @Override
@@ -28,12 +33,20 @@ public class ShopServiceImpl implements ShopService<Integer> {
     }
 
     @Override
-    public void expel(ShopDto goods) {
-        shopRepository.deleteById(goods.getId());
+    public void expel(ShopDto shop) {
+        List<AvailabilityDto> avail = availabilityService.findAllByPlaceId(shop.getId());
+        for (AvailabilityDto a : avail) {
+            availabilityService.expel(a);
+        }
+        shopRepository.deleteById(shop.getId());
     }
 
     @Override
     public void expel(Integer id) {
+        List<AvailabilityDto> avail = availabilityService.findAllByPlaceId(id);
+        for (AvailabilityDto a : avail) {
+            availabilityService.expel(a);
+        }
         shopRepository.deleteById(id);
     }
 

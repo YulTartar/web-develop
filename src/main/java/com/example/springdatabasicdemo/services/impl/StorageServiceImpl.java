@@ -1,8 +1,11 @@
 package com.example.springdatabasicdemo.services.impl;
 
+import com.example.springdatabasicdemo.dtos.AvailabilityDto;
+import com.example.springdatabasicdemo.dtos.ShopDto;
 import com.example.springdatabasicdemo.dtos.StorageDto;
 import com.example.springdatabasicdemo.models.Storage;
 import com.example.springdatabasicdemo.repositories.StorageRepository;
+import com.example.springdatabasicdemo.services.AvailabilityService;
 import com.example.springdatabasicdemo.services.StorageService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +22,9 @@ public class StorageServiceImpl implements StorageService<Integer> {
     private StorageRepository storageRepository;
 
     @Autowired
+    private AvailabilityService availabilityService;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     @Override
@@ -28,12 +34,20 @@ public class StorageServiceImpl implements StorageService<Integer> {
     }
 
     @Override
-    public void expel(StorageDto goods) {
-        storageRepository.deleteById(goods.getId());
+    public void expel(StorageDto storage) {
+        List<AvailabilityDto> avail = availabilityService.findAllByPlaceId(storage.getId());
+        for (AvailabilityDto a : avail) {
+            availabilityService.expel(a);
+        }
+        storageRepository.deleteById(storage.getId());
     }
 
     @Override
     public void expel(Integer id) {
+        List<AvailabilityDto> avail = availabilityService.findAllByPlaceId(id);
+        for (AvailabilityDto a : avail) {
+            availabilityService.expel(a);
+        }
         storageRepository.deleteById(id);
     }
 

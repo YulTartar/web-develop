@@ -2,6 +2,7 @@ package com.example.springdatabasicdemo.repositories;
 
 import com.example.springdatabasicdemo.models.Availability;
 import com.example.springdatabasicdemo.models.Goods;
+import com.example.springdatabasicdemo.models.Place;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,8 +11,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface AvailabilityRepository extends JpaRepository<Availability, Integer> {
-    List<Availability> findAllByPlaceName(String groupName);
+    List<Availability> findAllByPlaceId(int id);
 
+    List<Availability> findAllByPlaceName(String placeName);
+    /*
+    @Query("SELECT a.place FROM Availability a WHERE a.goods.id = :goodsId")
+    List<Place> findAllPlaceByGoodsId(@Param("goodsId") int goodsId);
+    */
     @Query("SELECT a FROM Availability a WHERE a.dateDelivery < :date")
     List<Availability> findAllByDate(@Param("date") java.sql.Date date);
 

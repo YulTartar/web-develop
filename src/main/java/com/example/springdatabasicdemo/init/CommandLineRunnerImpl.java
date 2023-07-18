@@ -27,15 +27,12 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
     @Autowired
     private PlaceService placeService;
 
+    @Autowired
+    private PlaceService goodsService;
+
     @Override
     public void run(String... args) throws Exception {
         seedData();
-    }
-
-    private void printAllAvailabilityByPlaceName(String placeName) {
-        availabilityService
-                .findAvalabilitysByPlace(placeName)
-                .forEach(System.out::println);
     }
 
     private void seedData() throws IOException {
@@ -57,9 +54,9 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         PlaceDto p1 = pO1.get();
         PlaceDto p2 = pO2.get();
 
-        GoodsDto g1 = new GoodsDto(0,"Молоко Домик в Деревне", "Свежее пастеризованное молоко", "10.55.78.123", "10.55", "EAN-8", "01234567");
-        GoodsDto g2 = new GoodsDto(0,"Морковь", "Свежие и сочные моркови", "10.50.12.005", "10.50", "EAN-13", "3256789045172");
-        GoodsDto g3 = new GoodsDto(0, "Яблоки Голден", "Сочные и сладкие яблоки сорта Голден", "10.30.19.002", "10.30", "EAN-13", "4867529130456");
+        GoodsDto g1 = new GoodsDto(0,"Молоко Домик в Деревне", "Свежее пастеризованное молоко", "10.55.78.123", "10.55", "EAN-8", "01234567", new java.sql.Date(127, 12, 14));
+        GoodsDto g2 = new GoodsDto(0,"Морковь", "Свежие и сочные моркови", "10.50.12.005", "10.50", "EAN-13", "3256789045172", new java.sql.Date(122, 12, 14));
+        GoodsDto g3 = new GoodsDto(0, "Яблоки Голден", "Сочные и сладкие яблоки сорта Голден", "10.30.19.002", "10.30", "EAN-13", "4867529130456", new java.sql.Date(100, 12, 14));
 
         AvailabilityDto a1 = new AvailabilityDto(0, 10, p1, g1, new java.sql.Date(121, 12, 14));
         AvailabilityDto a2 = new AvailabilityDto(0, 15, p2, g2, new java.sql.Date(121, 3, 28));
@@ -69,11 +66,6 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         availabilityService.register(a2);
         availabilityService.register(a3);
 
-        printAllAvailabilityByPlaceName("UVP-212");
-
-        // studentService.transfer(s1, s2.getGroup());
-
-        printAllAvailabilityByPlaceName("UVP-212");
-
+        System.out.println(availabilityService.findAvalabilitysByPlace("Пром"));
     }
 }
