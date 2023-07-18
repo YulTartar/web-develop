@@ -49,15 +49,10 @@ public class GoodsServiceImpl implements GoodsService<Integer> {
 
     @Override
     public List<GoodsDto> findBadGoods() {
-        return goodsRepository.findBadGoods().stream().map((s) -> modelMapper.map(s, GoodsDto.class)).collect(Collectors.toList());
+        return goodsRepository.findBadGoods().stream().map((s)
+                -> modelMapper.map(s, GoodsDto.class)).collect(Collectors.toList());
     }
-    /*
-    @Override
-    public List<PlaceDto> findPlacesByGoodsId(int id) {
-        System.out.println(findPlacesByGoodsId(id));
-        return availabilityRepository.findAllPlaceByGoodsId(id).stream().map((s) -> modelMapper.map(s, PlaceDto.class)).collect(Collectors.toList());
-    }
-    */
+
     @Override
     public List<GoodsDto> getAll() {
         return goodsRepository.findAll().stream().map((s) -> modelMapper.map(s, GoodsDto.class)).collect(Collectors.toList());

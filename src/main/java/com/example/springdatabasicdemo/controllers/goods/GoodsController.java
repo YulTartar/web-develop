@@ -25,12 +25,7 @@ public class GoodsController {
     Iterable<GoodsDto> allbad() {
         return goodsService.findBadGoods();
     }
-    /*
-    @GetMapping("/goods/whatPlaces/{id}")
-    Iterable<PlaceDto> findPlaces(@PathVariable Integer id) {
-        return goodsService.findPlacesByGoodsId(id);
-    }
-    */
+
     @GetMapping("/goods/{id}")
     GoodsDto one(@PathVariable Integer id) throws Throwable {
         return (GoodsDto) goodsService.findGoods(id)

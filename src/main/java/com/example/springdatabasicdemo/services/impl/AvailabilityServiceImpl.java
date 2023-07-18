@@ -55,15 +55,7 @@ public class AvailabilityServiceImpl implements AvailabilityService<Integer> {
     public void expel(Integer id) {
         availabilityRepository.deleteById(id);
     }
-    /*
-    @Override
-    public void transfer(AvailabilityDto avalability, PlaceDto place) {
-        Availability s = availabilityRepository.findById(avalability.getId()).get();
-        Place g = placeRepository.findById(place.getId()).get();
-        s.setPlace(g);
-        availabilityRepository.save(s);
-    }
-    */
+
     @Override
     public Optional<AvailabilityDto> findAvalability(Integer id) {
         return Optional.ofNullable(modelMapper.map(availabilityRepository.findById(id), AvailabilityDto.class));
@@ -71,12 +63,14 @@ public class AvailabilityServiceImpl implements AvailabilityService<Integer> {
 
     @Override
     public List<AvailabilityDto> getAll() {
-        return availabilityRepository.findAll().stream().map((s) -> modelMapper.map(s, AvailabilityDto.class)).collect(Collectors.toList());
+        return availabilityRepository.findAll().stream().map((s) ->
+                modelMapper.map(s, AvailabilityDto.class)).collect(Collectors.toList());
     }
 
     @Override
     public List<AvailabilityDto> findAllbyDate(java.sql.Date currentDate) {
-        return availabilityRepository.findAllByDate(currentDate).stream().map((s) -> modelMapper.map(s, AvailabilityDto.class)).collect(Collectors.toList());
+        return availabilityRepository.findAllByDate(currentDate).stream().map((s) ->
+                modelMapper.map(s, AvailabilityDto.class)).collect(Collectors.toList());
     }
 
     @Override
@@ -91,6 +85,7 @@ public class AvailabilityServiceImpl implements AvailabilityService<Integer> {
 
     @Override
     public List<GoodsDto> findGoodsByPlaceName(String placeName) {
-        return availabilityRepository.findGoodsByPlaceName(placeName).stream().map((s) -> modelMapper.map(s, GoodsDto.class)).collect(Collectors.toList());
+        return availabilityRepository.findGoodsByPlaceName(placeName).stream().map((s) ->
+                modelMapper.map(s, GoodsDto.class)).collect(Collectors.toList());
     }
 }

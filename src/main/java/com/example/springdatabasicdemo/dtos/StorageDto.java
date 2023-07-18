@@ -22,7 +22,7 @@ public class StorageDto {
 
     @Override
     public String toString() {
-        return "Level { id=" + id + ", name=" + name + ", capacity=" + capacity + ", type=" + type +
+        return "Storage { id=" + id + ", name=" + name + ", capacity=" + capacity + ", type=" + type +
                 ", address=" + address + ", employees=" + employees + ", space" + space + ", car=" + car + ", mechanization=" + mechanization +" }";
     }
 }

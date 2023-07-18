@@ -8,3 +8,4 @@ class AvailabilityNotFoundException extends RuntimeException {
         super("Could not find availability :(");
     }
 }
+

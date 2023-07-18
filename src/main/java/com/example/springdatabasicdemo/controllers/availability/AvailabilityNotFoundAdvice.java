@@ -1,6 +1,5 @@
 package com.example.springdatabasicdemo.controllers.availability;
 
-import lombok.experimental.StandardException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,3 +15,4 @@ public class AvailabilityNotFoundAdvice {
         return ex.getMessage();
     }
 }
+

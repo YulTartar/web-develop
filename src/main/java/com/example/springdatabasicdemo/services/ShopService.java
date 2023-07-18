@@ -14,9 +14,7 @@ public interface ShopService<ID> {
     void expel(ID id);
 
     Optional<ShopDto> findShop(ID id);
-    /*
-    List<ShopDto> findShopByAddress(String address);
-*/
+
     List<ShopDto> getAll();
 
 }

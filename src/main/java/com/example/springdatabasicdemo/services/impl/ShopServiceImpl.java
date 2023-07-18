@@ -54,12 +54,7 @@ public class ShopServiceImpl implements ShopService<Integer> {
     public Optional<ShopDto> findShop(Integer id) {
         return Optional.ofNullable(modelMapper.map(shopRepository.findById(id), ShopDto.class));
     }
-/*
-    @Override
-    public List<ShopDto> findShopByAddress(String address) {
-        return shopRepository.findShopByAddress(address).stream().map((p) -> modelMapper.map(p, ShopDto.class)).collect(Collectors.toList());
-    }
-    */
+
     @Override
     public List<ShopDto> getAll() {
         return shopRepository.findAll().stream().map((p) -> modelMapper.map(p, ShopDto.class)).collect(Collectors.toList());

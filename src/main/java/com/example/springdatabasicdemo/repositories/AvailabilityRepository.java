@@ -14,10 +14,7 @@ public interface AvailabilityRepository extends JpaRepository<Availability, Inte
     List<Availability> findAllByPlaceId(int id);
 
     List<Availability> findAllByPlaceName(String placeName);
-    /*
-    @Query("SELECT a.place FROM Availability a WHERE a.goods.id = :goodsId")
-    List<Place> findAllPlaceByGoodsId(@Param("goodsId") int goodsId);
-    */
+
     @Query("SELECT a FROM Availability a WHERE a.dateDelivery < :date")
     List<Availability> findAllByDate(@Param("date") java.sql.Date date);
 
