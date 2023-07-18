@@ -5,6 +5,8 @@ import com.example.springdatabasicdemo.services.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class StorageController {
 
@@ -24,6 +26,15 @@ public class StorageController {
 
         return (StorageDto) storageService.findStorage(id)
                 .orElseThrow(() -> new StorageNotFoundException(id));
+    }
+
+    @GetMapping("/storage/findByCapacity/{capacity}")
+    Iterable<StorageDto> findByCapacity(@PathVariable Integer capacity) throws Throwable {
+        List<StorageDto> storageList = storageService.findStorageByCapacity(capacity);
+        if (storageList.isEmpty()) {
+            throw new StorageFindNotFoundException();
+        }
+        return storageList;
     }
 
     @DeleteMapping("/storage/{id}")

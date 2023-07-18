@@ -41,11 +41,7 @@ public class GoodsServiceImpl implements GoodsService<Integer> {
     public Optional<GoodsDto> findGoods(Integer id) {
         return Optional.ofNullable(modelMapper.map(goodsRepository.findById(id), GoodsDto.class));
     }
- /*@Override
-    public GoodsDto findAvailabilityByGoodsName(String goodsName) {
-        return modelMapper.map(goodsRepository.findAvailabilityByGoodsName(goodsName), GoodsDto.class);
-    }
-*/
+
     @Override
     public List<GoodsDto> getAll() {
         return goodsRepository.findAll().stream().map((s) -> modelMapper.map(s, GoodsDto.class)).collect(Collectors.toList());

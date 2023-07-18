@@ -41,10 +41,12 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
     private void seedData() throws IOException {
         //Добавление в БД записей
         ShopDto s1 = new ShopDto(0, "Apax", 3, "SHOP", "Одинцово", 300, 50, "Постамат", 5);
-        StorageDto s2 = new StorageDto(0, "Пром", 3, "STORAGE", "Владивосток", 500, 50, 15, 5);
+        StorageDto s2 = new StorageDto(0, "Пром", 1000, "STORAGE", "Владивосток", 500, 50, 15, 5);
+        StorageDto s3 = new StorageDto(0, "Склад Фруктового райа", 500, "STORAGE", "Московская обл., г. Сергиев Посад, ул. Цветочная, дом 7", 4000, 25, 800, 7);
 
         shopService.register(s1);
         storageService.register(s2);
+        storageService.register(s3);
 
         System.out.println(placeService.findPlace(1).get());
         System.out.println(placeService.findPlace(1).get());
@@ -55,14 +57,17 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         PlaceDto p1 = pO1.get();
         PlaceDto p2 = pO2.get();
 
-        GoodsDto g1 = new GoodsDto(0,"MIIT","хавоший", "7878", "7878", "тип", "7878");
-        GoodsDto g2 = new GoodsDto(0,"Subway","чудесный", "75578", "55", "тип2", "555");
+        GoodsDto g1 = new GoodsDto(0,"Молоко Домик в Деревне", "Свежее пастеризованное молоко", "10.55.78.123", "10.55", "EAN-8", "01234567");
+        GoodsDto g2 = new GoodsDto(0,"Морковь", "Свежие и сочные моркови", "10.50.12.005", "10.50", "EAN-13", "3256789045172");
+        GoodsDto g3 = new GoodsDto(0, "Яблоки Голден", "Сочные и сладкие яблоки сорта Голден", "10.30.19.002", "10.30", "EAN-13", "4867529130456");
 
         AvailabilityDto a1 = new AvailabilityDto(0, 10, p1, g1);
         AvailabilityDto a2 = new AvailabilityDto(0, 15, p2, g2);
+        AvailabilityDto a3 = new AvailabilityDto(0, 10, p2, g3);
 
-        a1 = availabilityService.register(a1);
-        a2 = availabilityService.register(a2);
+        availabilityService.register(a1);
+        availabilityService.register(a2);
+        availabilityService.register(a3);
 
         printAllAvailabilityByPlaceName("UVP-212");
 

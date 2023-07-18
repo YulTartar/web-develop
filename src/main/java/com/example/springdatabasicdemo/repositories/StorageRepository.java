@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface StorageRepository extends JpaRepository<Storage, Integer> {
-    @Query(value = "SELECT v.name FROM Storage v WHERE v.capacity = :capacity")
-    List<String> findStorageNameByCapacity(@Param(value = "capacity") int capacity);
+    @Query(value = "SELECT v.name FROM Storage v WHERE v.capacity < :capacity")
+    List<String> findStorageByCapacity(@Param(value = "capacity") int capacity);
 }
