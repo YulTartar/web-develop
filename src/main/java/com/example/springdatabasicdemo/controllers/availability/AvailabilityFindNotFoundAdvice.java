@@ -1,6 +1,5 @@
 package com.example.springdatabasicdemo.controllers.availability;
 
-import lombok.experimental.StandardException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -8,11 +7,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-public class AvailabilityNotFoundAdvice {
+public class AvailabilityFindNotFoundAdvice extends Throwable {
     @ResponseBody
-    @ExceptionHandler(AvailabilityNotFoundException.class)
+    @ExceptionHandler(AvailabilityFindNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String availabilityNotFoundHandler(AvailabilityNotFoundException ex) {
+    String availabilityNotFoundHandler(AvailabilityFindNotFoundException ex) {
         return ex.getMessage();
     }
 }

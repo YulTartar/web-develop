@@ -1,5 +1,6 @@
 package com.example.springdatabasicdemo.services.impl;
 
+import com.example.springdatabasicdemo.dtos.GoodsDto;
 import com.example.springdatabasicdemo.dtos.PlaceDto;
 import com.example.springdatabasicdemo.dtos.AvailabilityDto;
 import com.example.springdatabasicdemo.models.Place;
@@ -75,7 +76,17 @@ public class AvailabilityServiceImpl implements AvailabilityService<Integer> {
     }
 
     @Override
+    public List<AvailabilityDto> findAllbyDate(java.sql.Date currentDate) {
+        return availabilityRepository.findAllByDate(currentDate).stream().map((s) -> modelMapper.map(s, AvailabilityDto.class)).collect(Collectors.toList());
+    }
+
+    @Override
     public List<AvailabilityDto> findAvalabilitysByPlace(String place) {
         return availabilityRepository.findAllByPlaceName(place).stream().map((s) -> modelMapper.map(s, AvailabilityDto.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<GoodsDto> findGoodsByPlaceName(String placeName) {
+        return availabilityRepository.findGoodsByPlaceName(placeName).stream().map((s) -> modelMapper.map(s, GoodsDto.class)).collect(Collectors.toList());
     }
 }

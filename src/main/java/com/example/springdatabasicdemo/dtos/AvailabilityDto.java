@@ -15,6 +15,7 @@ public class AvailabilityDto {
     private int count;
     private PlaceDto place;
     private GoodsDto goods;
+    private java.sql.Date dateDelivery;
 
     @Override
     public String toString() {

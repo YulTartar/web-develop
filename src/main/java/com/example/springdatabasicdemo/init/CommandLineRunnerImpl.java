@@ -61,9 +61,9 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         GoodsDto g2 = new GoodsDto(0,"Морковь", "Свежие и сочные моркови", "10.50.12.005", "10.50", "EAN-13", "3256789045172");
         GoodsDto g3 = new GoodsDto(0, "Яблоки Голден", "Сочные и сладкие яблоки сорта Голден", "10.30.19.002", "10.30", "EAN-13", "4867529130456");
 
-        AvailabilityDto a1 = new AvailabilityDto(0, 10, p1, g1);
-        AvailabilityDto a2 = new AvailabilityDto(0, 15, p2, g2);
-        AvailabilityDto a3 = new AvailabilityDto(0, 10, p2, g3);
+        AvailabilityDto a1 = new AvailabilityDto(0, 10, p1, g1, new java.sql.Date(121, 12, 14));
+        AvailabilityDto a2 = new AvailabilityDto(0, 15, p2, g2, new java.sql.Date(121, 3, 28));
+        AvailabilityDto a3 = new AvailabilityDto(0, 10, p2, g3, new java.sql.Date(122, 9, 14));
 
         availabilityService.register(a1);
         availabilityService.register(a2);

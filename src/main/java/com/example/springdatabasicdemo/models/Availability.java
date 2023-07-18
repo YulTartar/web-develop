@@ -27,6 +27,9 @@ public class Availability extends BaseEntity {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Goods goods;
 
+    @Column(name = "date_delivery")
+    private java.sql.Date dateDelivery;
+
     @Override
     public String toString() {
         return "Availability { id=" + id + ", count=" + count + " }";

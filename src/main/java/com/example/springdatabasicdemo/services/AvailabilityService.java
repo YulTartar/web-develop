@@ -1,5 +1,6 @@
 package com.example.springdatabasicdemo.services;
 
+import com.example.springdatabasicdemo.dtos.GoodsDto;
 import com.example.springdatabasicdemo.dtos.PlaceDto;
 import com.example.springdatabasicdemo.dtos.AvailabilityDto;
 
@@ -19,6 +20,11 @@ public interface AvailabilityService<ID> {
     Optional<AvailabilityDto> findAvalability(Integer id);
 
     List<AvailabilityDto> getAll();
+
+    List<AvailabilityDto> findAllbyDate(java.sql.Date currentDate);
+
     List<AvailabilityDto> findAvalabilitysByPlace(String place);
+
+    List<GoodsDto> findGoodsByPlaceName(String placeName);
 }
 
