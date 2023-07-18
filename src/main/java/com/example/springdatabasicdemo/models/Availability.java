@@ -19,7 +19,7 @@ public class Availability extends BaseEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "place_id", referencedColumnName = "id", nullable=false)
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Place place;
 
     @ManyToOne(optional = false)

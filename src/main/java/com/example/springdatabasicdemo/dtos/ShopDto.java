@@ -9,13 +9,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class PlaceDto {
+public class ShopDto {
     private int id;
     private String name;
-    private int capacity;
+    private String level;
 
     @Override
     public String toString() {
-        return "Place { id=" + id + ", name=" + name + " }";
+        return "Shop { id=" + id + ", level=" + level + " }";
     }
 }

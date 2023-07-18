@@ -16,10 +16,11 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "place")
+@Inheritance(strategy=InheritanceType.JOINED)
 public class Place extends BaseEntity {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "place")
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Set<Availability> availabilities;
 
     public Place(String name) {
@@ -30,6 +31,8 @@ public class Place extends BaseEntity {
     @Column(name = "name", length = 50, nullable = false)
     private String name;
 
+    @Column(name = "capacity")
+    private int capacity;
 
     @Override
     public String toString() {
