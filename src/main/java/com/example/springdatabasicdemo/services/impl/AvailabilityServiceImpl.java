@@ -69,7 +69,7 @@ public class AvailabilityServiceImpl implements AvailabilityService<Integer> {
 
     @Override
     public List<AvailabilityDto> findAllbyDate(java.sql.Date currentDate) {
-        return availabilityRepository.findAllByDate(currentDate).stream().map((s) ->
+        return availabilityRepository.findByDateDeliveryGreaterThan(currentDate).stream().map((s) ->
                 modelMapper.map(s, AvailabilityDto.class)).collect(Collectors.toList());
     }
 
