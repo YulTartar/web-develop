@@ -1,6 +1,9 @@
 package com.example.springdatabasicdemo.models;
 
+import com.example.springdatabasicdemo.dtos.BrandDTO;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @MappedSuperclass
 public abstract class BaseEntity {
@@ -16,4 +19,6 @@ public abstract class BaseEntity {
     protected void setId(int id) {
         this.id = id;
     }
+
+
 }
